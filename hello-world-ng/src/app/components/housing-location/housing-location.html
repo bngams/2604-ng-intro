@@ -1,0 +1,40 @@
+<!--/!\ depredated *ngIf -->
+<ng-container *ngIf="displayMode === 'list' else otherTemplate ">
+<!--instead checking each house property house?.name use a global condition -->
+@if(house) {
+  <section class="listing">
+    <img
+      class="listing-photo"
+      [src]="house.photo"
+      alt="Exterior photo of {{ house.name }}"
+      crossorigin
+    />
+    <h2 class="listing-heading">{{ house.name }}</h2>
+    <p class="listing-location">{{ house.city }}, {{ house.state }}</p>
+    <a [routerLink]="['/details', house.id]">Learn More</a>
+    <button type="button" (click)="triggerOutput()">Some Ouput</button>
+  </section>
+} @else {
+  <p> No house data...</p>
+}
+</ng-container>
+<ng-template #otherTemplate >
+  <img
+    class="listing-photo"
+    [src]="house?.photo"
+    alt="Exterior photo of {{ house?.name }}"
+    crossorigin
+  />
+  <section class="listing-description">
+    <h2 class="listing-heading">{{ house?.name }}</h2>
+    <p class="listing-location">{{ house?.city }}, {{ house?.state }}</p>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">About this housing location</h2>
+    <ul>
+      <li>Units available: {{ house?.availableUnits }}</li>
+      <li>Does this location have wifi: {{ house?.wifi }}</li>
+      <li>Does this location have laundry: {{ house?.laundry }}</li>
+    </ul>
+  </section>
+</ng-template>

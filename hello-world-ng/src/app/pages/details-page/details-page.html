@@ -1,0 +1,22 @@
+<article>
+  <app-housing-location [house]="house" [displayMode]="'details'"></app-housing-location>
+
+  <!-- /!\ formGroup directive needs to be on the form element -->
+  <section class="listing-apply">
+    <h2 class="section-heading">Apply now to live here</h2>
+    <form [formGroup]="applyForm" (submit)="submitApplication()">
+      <label for="first-name">First Name</label>
+      <!-- /!\ directive [formControlName]="expr angular" vs formControlName="string" -->
+      <input id="first-name" type="text" [formControlName]="'firstName'" />
+      <label for="last-name">Last Name</label>
+      <input id="last-name" type="text" formControlName="lastName" />
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email"/>
+      @if(this.applyForm.controls['email'].errors) {
+        <!-- @for => dipslay errors from validators -->
+         Incorrect value....
+      }
+      <button type="submit" class="primary" [disabled]="!this.applyForm.valid">Apply now</button>
+    </form>
+  </section>
+</article>
