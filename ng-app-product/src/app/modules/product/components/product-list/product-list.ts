@@ -30,6 +30,12 @@ export class ProductList {
   }
 
   initDataWithService() {
+    // with then internal signal in the service
     this.productService.loadProducts();
+
+    // with the observable and subscribe method
+    this.productService.fetchProducts().subscribe((response) => {
+      this.products = response.products;
+    });
   }
 }

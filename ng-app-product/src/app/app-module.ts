@@ -9,6 +9,7 @@ import { Home } from './pages/home/home';
 import { About } from './pages/about/about';
 import { UIModule } from './modules/ui/ui-module';
 import { CartModule } from './modules/cart/cart-module';
+import { AuthModule } from './modules/auth/auth-module';
 import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { provideHttpClient } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     CartModule,
+    AuthModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

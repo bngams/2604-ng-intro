@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 type ProductResponse = {
   products: Product[];
@@ -24,6 +25,9 @@ export class ProductService {
   // signal, subject or any reactive wrapper to store the products and update the UI correctly when it changes
   products = signal<Product[]>([]);
 
+  /**
+   * load products inside products signal
+   */
   loadProducts() {
     const observer = {
       next: (response: ProductResponse) => {
@@ -42,6 +46,14 @@ export class ProductService {
     // this.http.get<ProductResponse>(this.PRODUCTS_API_URL).subscribe((response) => {
     //   this.products.set(response.products);
     // });
+  }
+
+  /**
+   * Fetch products from the API
+   * @returns Observable<ProductResponse>
+   */
+  fetchProducts(): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(this.PRODUCTS_API_URL);
   }
 
   addProduct(newProduct: Product) {

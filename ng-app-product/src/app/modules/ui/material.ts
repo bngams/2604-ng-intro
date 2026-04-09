@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -13,5 +15,7 @@ export const MATERIAL_MODULES = [
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatProgressSpinnerModule,
+  MatDividerModule
 ];

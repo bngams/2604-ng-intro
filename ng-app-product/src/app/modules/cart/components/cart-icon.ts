@@ -1,5 +1,6 @@
-import { Component, computed, inject, signal } from "@angular/core";
+import { Component, computed, inject, signal, WritableSignal } from "@angular/core";
 import { CartService } from "../services/cart-service";
+import { CartItem } from "../models/cart";
 
 @Component({
   selector: 'app-cart-icon',
@@ -20,7 +21,9 @@ export class CartIcon {
   private cartService = inject(CartService);
 
   // direct usage of a signal in the template is possible, but not optimized for performance and lifecycle
-  items = this.cartService.signalCartItems
+  itemsSignal: WritableSignal<CartItem[]> = this.cartService.signalCartItems;
+
+  items: CartItem[] = this.cartService.signalCartItems();
 
   // computed property to calculate the total quantity of items in the cart
   totalQuantity = computed(() => this.cartService.signalCartItems().length);

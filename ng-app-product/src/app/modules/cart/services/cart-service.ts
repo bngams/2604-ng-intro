@@ -30,6 +30,7 @@ export class CartService {
 
   addToSignalCartItems(product: Product, quantity: number = 1) {
     this.signalCartItems.update(items => [...items, { product, quantity }]);
+    console.log('Cart items after update:', this.signalCartItems());
   }
 
   addToSubjectCartItems(product: Product, quantity: number = 1) {
