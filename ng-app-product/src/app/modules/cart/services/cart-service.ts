@@ -8,7 +8,10 @@ import { Subject } from "rxjs";
 })
 export class CartService {
 
+  // exemple de variable simple pour stocker les produits du panier
   public simpleCartItems: CartItem[] = [];
+
+  // signal pour stocker les produits du panier => approche reactive
   public signalCartItems = signal<CartItem[]>([]);
 
   // rxjs et observable pour stocker les produits du panier => ancetres de signals

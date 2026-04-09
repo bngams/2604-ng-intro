@@ -9,6 +9,7 @@ import { Home } from './pages/home/home';
 import { About } from './pages/about/about';
 import { UIModule } from './modules/ui/ui-module';
 import { CartModule } from './modules/cart/cart-module';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [App, Header, NotFound, Home, About],
@@ -18,7 +19,10 @@ import { CartModule } from './modules/cart/cart-module';
     AppRoutingModule,
     CartModule,
   ],
-  providers: [provideBrowserGlobalErrorListeners()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
