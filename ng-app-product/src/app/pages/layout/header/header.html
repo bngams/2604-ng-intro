@@ -4,9 +4,10 @@
   </button>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
+  <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+  <a mat-button routerLink="/about" routerLinkActive="active">About</a>
+  <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
+  <app-cart-icon></app-cart-icon>
   <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>

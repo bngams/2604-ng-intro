@@ -5,10 +5,12 @@ import { MATERIAL_MODULES } from "./material";
   // internal module logic
   // declarations: [],
   // imports: [],
-  
+
   // public API
   exports: [
+    // MatToolbarModule,
+    // MatButtonModule,
     ...MATERIAL_MODULES
   ]
 })
-export class MaterialModule { }
+export class UIModule { }
