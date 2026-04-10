@@ -34,8 +34,8 @@ export class ProductList {
     this.productService.loadProducts();
 
     // with the observable and subscribe method
-    this.productService.fetchProducts().subscribe((response) => {
-      this.products = response.products;
+    this.productService.fetchProducts().subscribe((products) => {
+      this.products = products;
     });
   }
 }

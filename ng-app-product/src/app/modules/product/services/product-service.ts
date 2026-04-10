@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 type ProductResponse = {
   products: Product[];
@@ -52,8 +52,15 @@ export class ProductService {
    * Fetch products from the API
    * @returns Observable<ProductResponse>
    */
-  fetchProducts(): Observable<ProductResponse> {
+  fetchProductsResponse(): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(this.PRODUCTS_API_URL);
+  }
+
+  fetchProducts(): Observable<Product[]> {
+    return this.http.get<ProductResponse>(this.PRODUCTS_API_URL).pipe(
+      // you can add operators here to transform the response if needed
+      map((response: ProductResponse) => response.products)
+    );
   }
 
   addProduct(newProduct: Product) {
